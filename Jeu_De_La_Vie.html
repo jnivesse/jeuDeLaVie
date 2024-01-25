@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Jeu_De_La_Vie.css">
+    <title>Jeu de la vie</title>
+</head>
+<body>
+    <header>
+        <a href="Formulaire.html">se connecter</a>
+        <h1>Le jeu de la vie</h1>
+        <a href="regles.html">règles du jeu</a>
+    </header>
+         
+    
+    <div id="champ">           
+        <p>hauteur: </p>
+        <textarea rows="1" cols="8" id="hauteur"></textarea>    
+        <p>largeur: </p>
+        <textarea rows="1" cols="8" id="largeur"></textarea>
+        <p>Vol: </p>
+        <textarea rows="1" cols="8" id="vol"></textarea>
+        <button id="exterminatus">Exterminatus</button>
+    </div>
+    <div id="jumpDiv">
+        <button id="jump">JUMP</button>
+    </div>   
+    <div id="container">        
+    </div>
+    <div>
+        <p id="star">.</p>
+    </div>    
+    <script src="starLight.js"></script>
+    <script src="Jeu_De_La_Vie.js"></script>
+</body>
+</html>

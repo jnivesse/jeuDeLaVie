@@ -1,0 +1,72 @@
+body{
+    background-image: url(belles-etoiles-brillantes-dans-ciel-nocturne_181624-622.avif);
+}
+.rouge{
+    background-color: red;
+    width: 25px;
+    height: 25px;
+    border: 1px solid red;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px red;
+    z-index: 3;
+    margin: 0;
+    padding: 0;
+    opacity:0.9;
+}
+.blanc{
+    background-color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid white;
+    border-color: white;
+    box-shadow: 0 0 0 2px white;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    opacity:0.9;
+}
+#champ {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+header{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+a{
+    color:white ;
+}
+fieldset{
+    color: white;
+}
+#jumpDiv{
+    display: flex;
+    justify-content: space-around;
+    
+}
+#container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+
+}
+p{
+    color: white;
+    margin-right: 4px;
+    margin-left: 8px;
+}
+#exterminatus{
+    margin-right: 4px;
+    margin-left: 20px;
+}
+#star{
+    color: white;
+    font-size: xx-large;
+    position: relative;
+}
