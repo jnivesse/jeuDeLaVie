@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Jeu_De_La_Vie.css">
     <title>Jeu de la vie</title>
 </head>
+
 <body>
     <header>
         <a href="Formulaire.html">se connecter</a>
         <h1>Le jeu de la vie</h1>
         <a href="Jeu_De_La_Vie.html">le jeu</a>
     </header>
-    <h2>les règles</h2>
-    <p> <u> Création de la grille </u>: Le jeu de la vie se joue sur une grille bidimensionnelle de largeur maximum de 58 et de hauteur maximum de 200 composée de cellules . <br><br>
-      <u>  État initial </u> : Chaque cellule peut être dans l'un des deux états possibles : vivante (cellule rouge) ou morte (cellule blanche).    <br>   <br> 
-     <u>   Évolution </u>: L'état de la grille évolue en fonction d'itérations successives, appelées générations.        <br><br>
-      <u>  Règles de survie </u>:        
-        Une cellule vivante avec 2 ou 3 cellules voisines vivantes reste vivante à la génération suivante.
-        Une cellule vivante avec moins de 2 voisins vivants meurt d'isolement.
-        Une cellule vivante avec plus de 3 voisins vivants meurt de surpopulation. <br><br>
-    <u>    Règle de naissance </u>: Une cellule morte avec exactement 3 voisins vivants devient vivante à la génération suivante, simulant la reproduction.    <br>    <br>
-        Stabilité et oscillation : Certains motifs restent inchangés au fil des générations (stabilité), tandis que d'autres oscillent entre plusieurs états (oscillation). <br> <br>
-    <u>    Patterns complexes </u>: Le jeu de la vie peut générer des structures complexes, telles que des planeurs (motifs qui se déplacent), des vaisseaux, et des structures statiques. 
-        Ces règles simples donnent lieu à une variété de comportements complexes et fascinants. Bien que le jeu de la vie soit un modèle abstrait, il a des applications dans divers domaines, y compris l'informatique, la biologie et la théorie des automates cellulaires.
-    </p>
     <div>
         <p id="star">.</p>
-    </div> 
-        <script src="starLight.js"></script>
+    </div>
+    <div id="sound" class="bouton"><img src="iconeSon.png" alt="Son"></div>
+    <div id="lire">
+        <h2>Les Règles du Jeu de la Vie Expliquées</h2>
+        <p class="underline">Création de la Grille :</p>
+        <p>Imagine un grand tableau rempli de ronds, c'est là que se joue le Jeu de la Vie.</p>
+        <p class="underline">État Initial :</p>
+        <p>Chaque rond peut être soit tout rouge et en vie, soit tout blanc et endormi.</p>
+        <p class="underline">Évolution :</p>
+        <p>Le tableau change au fil du temps, comme une histoire qui se déroule.</p>
+        <p class="underline">Règles de Survie :</p>
+        <p>Les ronds rouges (ceux qui sont déjà en vie) ont des règles. S'ils ont 2 ou 3 voisins rouges, ils restent en vie. Mais s'ils en ont trop, ils doivent s'endormir.</p>
+        <p class="underline">Règle de Naissance :</p>
+        <p>Un rond blanc (endormi) peut se réveiller ! S'il a exactement 3 voisins rouges, il se réveille et devient rouge à son tour.</p>
+        <p class="underline">Stabilité et Oscillation :</p>
+        <p>Parfois, certains ronds restent toujours pareils (stabilité), et d'autres changent tout le temps (oscillation).</p>
+        <p class="underline">Motifs Magiques :</p>
+        <p>Le Jeu de la Vie peut créer des dessins magiques, comme des ronds qui bougent ou des formes étonnantes.</p>
+        <p>C'est incroyable comment de simples règles peuvent rendre ce jeu si intéressant ! Même si c'est un jeu imaginaire, il peut nous aider à comprendre des choses dans l'informatique, la biologie, et même comment fonctionnent certains jeux vidéo.
+            Amuse-toi bien!
+        </p>
+    </div>
+    <div><a href="https://fr.wikipedia.org/wiki/Jeu_de_la_vie">Pour aller plus loin</a></div>
+    <script src="sound.js"></script>
+    <script src="starLight.js"></script>
 </body>
+
 </html>

@@ -1,13 +1,21 @@
 body{
     background-image: url(belles-etoiles-brillantes-dans-ciel-nocturne_181624-622.avif);
+    overflow-x: hidden;
+}
+#container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: flex-start;
 }
 .rouge{
     background-color: red;
-    width: 25px;
-    height: 25px;
+    width: 1.5vw;
+    height: 1.5vw;
     border: 1px solid red;
     border-radius: 50%;
-    box-shadow: 0 0 0 3px red;
+    box-shadow: 0 0 0 0.15vw red;
     z-index: 3;
     margin: 0;
     padding: 0;
@@ -15,16 +23,23 @@ body{
 }
 .blanc{
     background-color: white;
-    width: 25px;
-    height: 25px;
+    width: 1.5vw;
+    height: 1.5vw;
     border-radius: 50%;
     border: 1px solid white;
     border-color: white;
-    box-shadow: 0 0 0 2px white;
+    box-shadow: 0 0 0 0.15vw white;
     z-index: 1;
     margin: 0;
     padding: 0;
     opacity:0.9;
+} 
+@media (max-width: 1053px) {
+    .rouge, .blanc {
+        width: 1.2vw; 
+        height: 1.2vw;  
+        margin-bottom: -5px;      
+    }
 }
 #champ {
     flex-direction: row;
@@ -48,14 +63,7 @@ fieldset{
     justify-content: space-around;
     
 }
-#container{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: space-around;
-    justify-content: center;
 
-}
 p{
     color: white;
     margin-right: 4px;
@@ -68,5 +76,29 @@ p{
 #star{
     color: white;
     font-size: xx-large;
-    position: relative;
+    position: absolute;
+}
+.underline{
+    text-decoration: underline;
+}
+h2{
+    color: white;
+}
+#sound{
+    display: flex;
+    margin-left: 85%;
+}
+h1 {
+    font-size: 36px; /* Taille de police (ajustez selon vos préférences) */
+    border-radius: 10px; /* Bords plus arrondis (ajustez selon vos préférences) */
+    background: linear-gradient(to left, white 50%, red); /* Dégradé de 75% blanc à rouge */
+    -webkit-background-clip: text; /* Pour appliquer le dégradé au texte seulement (pour les navigateurs WebKit) */
+    color: transparent; /* Rendre le texte transparent pour voir le dégradé en arrière-plan */
+    transition: background 0.5s; /* Animation de transition pour le dégradé (ajustez selon vos préférences) */
+}
+.bouton{
+    scale: 1.2;
+}
+.bouton img:hover{
+    transform: scale(1.1);
 }

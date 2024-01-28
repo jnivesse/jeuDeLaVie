@@ -1,7 +1,14 @@
+// Initialisation de la grille
+let hauteur = 10;
+let largeur = 10;
+let grid = createRandomGrid(hauteur, largeur);
 
+// Appel de la fonction de conversion au chargement de la page
+document.addEventListener("DOMContentLoaded", function () {
+    conversionHTML(grid);
+});
 //la hauteur
 let catchHauteur = document.querySelector("#hauteur");
-let hauteur;
 catchHauteur.addEventListener("input", function () {
     hauteur = parseInt(catchHauteur.value);
     updateGrid();
@@ -9,7 +16,6 @@ catchHauteur.addEventListener("input", function () {
 });
 //largeur
 let catchLargeur = document.querySelector("#largeur");
-let largeur;
 catchLargeur.addEventListener("input", function () {
     largeur = parseInt(catchLargeur.value);
     updateGrid();
@@ -45,10 +51,11 @@ function createRandomGrid(hauteur, largeur) {
     return grid;
 }
 console.log(hauteur,largeur);
+
 // Maintenant ,il faut faire correspondre la grille a une grille de bouton dans le HTML
 function conversionHTML(grid) {
     const gridContainer = document.querySelector("#container");
-    gridContainer.innerHTML="";
+    gridContainer.innerText="";
     for (let j = 0; j < grid.length; j++) {
         const rowContainer = document.createElement('div'); 
         rowContainer.setAttribute('class', 'row');
@@ -186,41 +193,11 @@ function evolution(grid) {
     }
     return grid; 
 }
+//bouton Jump
 let saute=document.querySelector("#jump");
 saute.addEventListener("click",function (){
-    evolution(grid);
-    conversionHTML(grid);
-});
-// rentre les coordonnées de la création de grille puis fait vol fois evolution
-function timeJump(grid, vol) {
-    console.log("avant",vol);
-    if (!isNaN(vol)) {    
-        let k = 0;
-        function jump() {
-            if (k < vol) {
-                evolution(grid);
-                conversionHTML(grid);
-                k++;
-                if(vol<=10){
-                    setTimeout(jump, 1000);
-                } else if(vol>10 && vol<=100){
-                    setTimeout(jump, 333);
-                } else {
-                    setTimeout(jump, 100);
-                }
-            }
-        }
-        jump();
-        
-    }
-    
-    return grid;
-}
-let catchVol = document.querySelector("#vol");
-let vol;
-catchVol.addEventListener("input", function () {
-    vol = parseInt(catchVol.value);
-    timeJump(grid, vol);
+        evolution(grid);
+        conversionHTML(grid);
 });
 // fonction pour clear le board
 let extermine=document.querySelector("#exterminatus");
@@ -235,4 +212,59 @@ extermine.addEventListener("click",function (){
     }
     conversionHTML(grid);
 });
-
+// le bouton de lecture ect...
+let intervalEvolution;
+let intervalConversion;
+let clique = document.querySelector("#cliqueButton");
+let compteur = 0;
+clique.addEventListener("click", function () {
+    compteur++;
+    let vLecture = document.createElement("img");
+    // Clear des intervalles existants
+    clearInterval(intervalEvolution);
+    clearInterval(intervalConversion);
+    switch (compteur) {
+        // bouton lecture
+        case 1:
+            intervalEvolution = setInterval(function () {
+                evolution(grid);
+            }, 800);
+            intervalConversion = setInterval(function () {
+                conversionHTML(grid);
+            }, 800);
+            vLecture.src = "avanceRapide.png";
+            break;
+        // bouton avance rapide
+        case 2:
+            intervalEvolution = setInterval(function () {
+                evolution(grid);
+            }, 400);
+            intervalConversion = setInterval(function () {
+                conversionHTML(grid);
+            }, 400);
+            vLecture.src = "avanceTresRapide.png";
+            break;
+        // bouton avance tres rapide
+        case 3:
+            intervalEvolution = setInterval(function () {
+                evolution(grid);
+            }, 200);
+            intervalConversion = setInterval(function () {
+                conversionHTML(grid);
+            }, 200);
+            vLecture.src = "pause.png";
+            break;
+        // pause
+        case 4:
+            vLecture.src = "lecture.png";
+            compteur = 0;
+            break;
+    }
+    clique.innerHTML = "";
+    clique.appendChild(vLecture);
+    // Gestion du cas de la "pause"
+    if (compteur == 4) {
+        clearInterval(intervalEvolution);
+        clearInterval(intervalConversion);
+    }
+});

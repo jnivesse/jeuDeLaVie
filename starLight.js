@@ -1,5 +1,5 @@
 const star=document.getElementById("star");
-star.style.display="none";   
+star.style.display="block";   
 const xMax = document.documentElement.scrollWidth;
 console.log(xMax);
 const yMax = document.documentElement.scrollHeight;
@@ -29,7 +29,7 @@ function randomY (){
 }
 function randomStar(){
     rngStarX=Math.round(Math.random()*xMax);
-    rngStarY=Math.round(Math.random()*(0.9*yMax));
+    rngStarY=Math.round(Math.random()*(yMax*0.9));
     return rngStarX,rngStarY;
 }
 function firestar(){
@@ -46,12 +46,11 @@ function firestar(){
             let blaY=(rngStarY+(((rngY-rngStarY)/200)*i)-100);
             star.style.left=blaX + "px";
             star.style.top=blaY + "px";            
-            console.log(blaX,blaY);
             if(blaX<10 || blaX>(xMax-50)){
                 star.style.display="none"; 
             }
         }
     }
-}  
+} 
 firestar();
-setInterval(firestar,3000);
+setInterval(firestar,2500);

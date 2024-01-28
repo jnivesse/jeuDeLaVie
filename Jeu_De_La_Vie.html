@@ -8,29 +8,28 @@
 </head>
 <body>
     <header>
-        <a href="Formulaire.html">se connecter</a>
+        <a href="Formulaire.html">se connecter / s'inscrire</a>
         <h1>Le jeu de la vie</h1>
         <a href="regles.html">règles du jeu</a>
     </header>
-         
-    
     <div id="champ">           
         <p>hauteur: </p>
-        <textarea rows="1" cols="8" id="hauteur"></textarea>    
+        <input type="range" id="hauteur" min="10" max="63" step="1" value="10">
         <p>largeur: </p>
-        <textarea rows="1" cols="8" id="largeur"></textarea>
-        <p>Vol: </p>
-        <textarea rows="1" cols="8" id="vol"></textarea>
-        <button id="exterminatus">Exterminatus</button>
-    </div>
+        <input type="range" id="largeur" min="10" max="63" step="1" value="10">
+        
+    </div>  
     <div id="jumpDiv">
-        <button id="jump">JUMP</button>
+        <div id="jump" class="bouton"><img src="jump.png" alt="saute" ></div>
+        <div id="exterminatus" class="bouton"><img src="exterminatus.png" alt="effacer la grille"></div>
+        <div id="cliqueButton" class="bouton"><img src="lecture.png" alt="vitesse de lecture"></div>
+        
     </div>   
     <div id="container">        
     </div>
     <div>
         <p id="star">.</p>
-    </div>    
+    </div> 
     <script src="starLight.js"></script>
     <script src="Jeu_De_La_Vie.js"></script>
 </body>
