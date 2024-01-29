@@ -18,12 +18,20 @@ catchHauteur.addEventListener("input", function () {
 document.addEventListener("keydown", function (event) {
     if (event.key === "ArrowUp") {
         hauteur = Math.min(63, hauteur + 1);
+        catchHauteur.value = hauteur;
+        event.stopPropagation(); 
+        event.preventDefault();
+        updateGrid();
+        checkAndConvert();
     } else if (event.key === "ArrowDown") {
         hauteur = Math.max(10, hauteur - 1);
+        catchHauteur.value = hauteur;
+        event.stopPropagation(); 
+        event.preventDefault();
+        updateGrid();
+        checkAndConvert();
     }
-    catchHauteur.value = hauteur;
-    updateGrid();
-    checkAndConvert();
+    
 });
 // La largeur
 let catchLargeur = document.querySelector("#largeur");
@@ -36,12 +44,20 @@ catchLargeur.addEventListener("input", function () {
 document.addEventListener("keydown", function (event) {
     if (event.key === "ArrowRight") {
         largeur = Math.min(63, largeur + 1);
+        catchLargeur.value = largeur;
+        event.stopPropagation(); 
+        event.preventDefault();
+        updateGrid();
+        checkAndConvert();
     } else if (event.key === "ArrowLeft") {
         largeur = Math.max(10, largeur - 1);
+        catchLargeur.value = largeur;
+        event.stopPropagation(); 
+        event.preventDefault();
+        updateGrid();
+        checkAndConvert();
     }
-    catchLargeur.value = largeur;
-    updateGrid();
-    checkAndConvert();
+    
 });
 
 //Les 2 function de dépannages
@@ -223,10 +239,11 @@ saute.addEventListener("click",function (){
         evolution(grid);
         conversionHTML(grid);
 });
-// et enfin la barre espace  CA MARCHE PAS!!!!!!! il faudra une approche sans document.addEventListener("keydown", function je pense
+// et enfin la barre espace  CA MARCHE 
 document.addEventListener("keydown", function (event) {
-    if (event.key == " j") {
-        event.preventDefault();
+    if (event.key == " ") {
+        event.stopPropagation(); 
+        event.preventDefault(); 
         evolution(grid);
         conversionHTML(grid);
     }

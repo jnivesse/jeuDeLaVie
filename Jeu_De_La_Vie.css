@@ -1,6 +1,9 @@
 body{
-    background-image: url(imageJDV/belles-etoiles-brillantes-dans-ciel-nocturne_181624-622.avif);
+    background-image: url(imageJDV/belles-etoiles-brillantes-dans-ciel-nocturne_181624-622.avif) ;
     overflow-x: hidden;
+    /* background-size: cover;
+    height: 100vh;
+    min-height: 100vh; */
 }
 #container{
     display: flex;
