@@ -1,7 +1,7 @@
 # Jeu de la Vie
 
 Une implémentation simple du Jeu de la Vie en HTML, CSS et JavaScript.
-![Aperçu du Jeu de la Vie](![Image du jeu](<Capture d'écran 2024-01-28 181535.png>))
+![Aperçu du Jeu de la Vie](![image du jeu](<imageJDV/Capture d'écran 2024-01-28 181535.png>))
 
 ## Comment Jouer
 

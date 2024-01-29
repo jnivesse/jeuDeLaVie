@@ -1,5 +1,5 @@
 body{
-    background-image: url(belles-etoiles-brillantes-dans-ciel-nocturne_181624-622.avif);
+    background-image: url(imageJDV/belles-etoiles-brillantes-dans-ciel-nocturne_181624-622.avif);
     overflow-x: hidden;
 }
 #container{
@@ -34,7 +34,7 @@ body{
     padding: 0;
     opacity:0.9;
 } 
-@media (max-width: 1053px) {
+@media (max-width: 1150px) {
     .rouge, .blanc {
         width: 1.2vw; 
         height: 1.2vw;  
@@ -57,6 +57,12 @@ a{
 }
 fieldset{
     color: white;
+}
+#pnglargeur{
+    margin-left: 2vw;
+}
+#boutonrègles{
+    scale: 1.3;
 }
 #jumpDiv{
     display: flex;
@@ -95,6 +101,9 @@ h1 {
     -webkit-background-clip: text; /* Pour appliquer le dégradé au texte seulement (pour les navigateurs WebKit) */
     color: transparent; /* Rendre le texte transparent pour voir le dégradé en arrière-plan */
     transition: background 0.5s; /* Animation de transition pour le dégradé (ajustez selon vos préférences) */
+}
+#connecter{
+    margin-top: 2.2vw;
 }
 .bouton{
     scale: 1.2;

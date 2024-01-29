@@ -8,21 +8,26 @@
 </head>
 <body>
     <header>
-        <a href="Formulaire.html">se connecter / s'inscrire</a>
+        <a href="Formulaire.html" id="connecter">se connecter / s'inscrire</a>
         <h1>Le jeu de la vie</h1>
-        <a href="regles.html">règles du jeu</a>
+        <div>
+            <a href="regles.html" > règles du jeu</a>
+            <a href="regles.html" class="bouton"  > <img src="imageJDV/règles.png" alt="règles" id="boutonrègles"></a>
+        </div>
+        
     </header>
     <div id="champ">           
-        <p>hauteur: </p>
+        <!-- <p>hauteur: </p> -->
+        <img src="imageJDV/hauteur.png" alt="hauteur">
         <input type="range" id="hauteur" min="10" max="63" step="1" value="10">
-        <p>largeur: </p>
-        <input type="range" id="largeur" min="10" max="63" step="1" value="10">
-        
-    </div>  
+        <!-- <p>largeur: </p> -->
+        <img src="imageJDV/largeur.png" alt="largeur" id="pnglargeur">
+        <input type="range" id="largeur" min="10" max="63" step="1" value="10">        
+    </div> <br>
     <div id="jumpDiv">
-        <div id="jump" class="bouton"><img src="jump.png" alt="saute" ></div>
-        <div id="exterminatus" class="bouton"><img src="exterminatus.png" alt="effacer la grille"></div>
-        <div id="cliqueButton" class="bouton"><img src="lecture.png" alt="vitesse de lecture"></div>
+        <div id="jump" class="bouton"><img src="imageJDV/jump.png" alt="saute" ></div>
+        <div id="exterminatus" class="bouton"><img src="imageJDV/exterminatus.png" alt="effacer la grille"></div>
+        <div id="cliqueButton" class="bouton"><img src="imageJDV/lecture.png" alt="vitesse de lecture"></div>
         
     </div>   
     <div id="container">        

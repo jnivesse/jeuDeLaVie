@@ -7,20 +7,43 @@ let grid = createRandomGrid(hauteur, largeur);
 document.addEventListener("DOMContentLoaded", function () {
     conversionHTML(grid);
 });
-//la hauteur
+// La hauteur
 let catchHauteur = document.querySelector("#hauteur");
 catchHauteur.addEventListener("input", function () {
     hauteur = parseInt(catchHauteur.value);
     updateGrid();
     checkAndConvert();
 });
-//largeur
+//rajout du clavier
+document.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowUp") {
+        hauteur = Math.min(63, hauteur + 1);
+    } else if (event.key === "ArrowDown") {
+        hauteur = Math.max(10, hauteur - 1);
+    }
+    catchHauteur.value = hauteur;
+    updateGrid();
+    checkAndConvert();
+});
+// La largeur
 let catchLargeur = document.querySelector("#largeur");
 catchLargeur.addEventListener("input", function () {
     largeur = parseInt(catchLargeur.value);
     updateGrid();
     checkAndConvert();
 });
+//rajout du clavier
+document.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowRight") {
+        largeur = Math.min(63, largeur + 1);
+    } else if (event.key === "ArrowLeft") {
+        largeur = Math.max(10, largeur - 1);
+    }
+    catchLargeur.value = largeur;
+    updateGrid();
+    checkAndConvert();
+});
+
 //Les 2 function de dépannages
 //fonction de rappel de la grille
 function updateGrid() {
@@ -193,11 +216,20 @@ function evolution(grid) {
     }
     return grid; 
 }
+
 //bouton Jump
 let saute=document.querySelector("#jump");
 saute.addEventListener("click",function (){
         evolution(grid);
         conversionHTML(grid);
+});
+// et enfin la barre espace  CA MARCHE PAS!!!!!!! il faudra une approche sans document.addEventListener("keydown", function je pense
+document.addEventListener("keydown", function (event) {
+    if (event.key == " j") {
+        event.preventDefault();
+        evolution(grid);
+        conversionHTML(grid);
+    }
 });
 // fonction pour clear le board
 let extermine=document.querySelector("#exterminatus");
@@ -232,7 +264,7 @@ clique.addEventListener("click", function () {
             intervalConversion = setInterval(function () {
                 conversionHTML(grid);
             }, 800);
-            vLecture.src = "avanceRapide.png";
+            vLecture.src = "imageJDV/avanceRapide.png";
             break;
         // bouton avance rapide
         case 2:
@@ -242,7 +274,7 @@ clique.addEventListener("click", function () {
             intervalConversion = setInterval(function () {
                 conversionHTML(grid);
             }, 400);
-            vLecture.src = "avanceTresRapide.png";
+            vLecture.src = "imageJDV/avanceTresRapide.png";
             break;
         // bouton avance tres rapide
         case 3:
@@ -252,11 +284,11 @@ clique.addEventListener("click", function () {
             intervalConversion = setInterval(function () {
                 conversionHTML(grid);
             }, 200);
-            vLecture.src = "pause.png";
+            vLecture.src = "imageJDV/pause.png";
             break;
         // pause
         case 4:
-            vLecture.src = "lecture.png";
+            vLecture.src = "imageJDV/lecture.png";
             compteur = 0;
             break;
     }
