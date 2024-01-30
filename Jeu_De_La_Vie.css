@@ -41,7 +41,7 @@ body{
     .rouge, .blanc {
         width: 1.2vw; 
         height: 1.2vw;  
-        margin-bottom: -5px;      
+        margin-bottom: -2vw;      
     }
 }
 #champ {
@@ -65,7 +65,8 @@ fieldset{
     margin-left: 2vw;
 }
 #boutonrègles{
-    scale: 1.3;
+    scale: 1.6;
+    margin-top: 2vw;
 }
 #jumpDiv{
     display: flex;
