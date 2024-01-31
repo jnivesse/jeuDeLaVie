@@ -108,11 +108,13 @@ function conversionHTML(grid) {
                     grid[saveJ][saveI]=1;
                     btn.classList.remove('blanc');
                     btn.classList.add('rouge');
+                    console.log(saveI,saveJ);
                     break;
                 case 1:
                     grid[saveJ][saveI]=0;
                     btn.classList.remove('rouge');
                     btn.classList.add('blanc');
+                    console.log(saveI,saveJ);
                     break;
                }               
             });
