@@ -30,8 +30,7 @@ document.addEventListener("keydown", function (event) {
         event.preventDefault();
         updateGrid();
         checkAndConvert();
-    }
-    
+    }    
 });
 // La largeur
 let catchLargeur = document.querySelector("#largeur");
@@ -56,8 +55,7 @@ document.addEventListener("keydown", function (event) {
         event.preventDefault();
         updateGrid();
         checkAndConvert();
-    }
-    
+    }   
 });
 
 //Les 2 function de dépannages
@@ -76,20 +74,15 @@ function checkAndConvert() {
 // création de la grille
 function createRandomGrid(hauteur, largeur) {
     let grid = [];
-    for (let j = 0; j < hauteur + 2; j++) {
+    for (let j = 0; j < hauteur ; j++) {
         let tabn = [];
-        for (let i = 0; i < largeur + 2; i++) {
-            if (j == 0 || j == hauteur + 1 || i == 0 || i == largeur + 1) {
-                tabn[i] = 8;
-            } else {
-                tabn[i] = Math.round(Math.random());
-            }
+        for (let i = 0; i < largeur ; i++) {
+            tabn[i] = Math.round(Math.random());
         }
         grid.push(tabn);
     }
     return grid;
 }
-console.log(hauteur,largeur);
 
 // Maintenant ,il faut faire correspondre la grille a une grille de bouton dans le HTML
 function conversionHTML(grid) {
@@ -108,91 +101,53 @@ function conversionHTML(grid) {
                     grid[saveJ][saveI]=1;
                     btn.classList.remove('blanc');
                     btn.classList.add('rouge');
-                    console.log(saveI,saveJ);
                     break;
                 case 1:
                     grid[saveJ][saveI]=0;
                     btn.classList.remove('rouge');
                     btn.classList.add('blanc');
-                    console.log(saveI,saveJ);
                     break;
                }               
             });
             if (grid[j][i] == 1) {               
                 btn.setAttribute('class', 'rouge',);
-            } if (grid[j][i] == 0) {
+            } else {
                 btn.setAttribute('class', 'blanc');
-            } if(grid[j][i] == 8) {
-                btn.style.opacity="0";
-            }
+            } 
             rowContainer.appendChild(btn); 
         }
         gridContainer.appendChild(rowContainer);
     }
     return grid;
 }
-// vérif pour 2
-function check2(grid,tempoGrid,ligne,colonne){   
+//check2 & check3 dans une seule fonction
+function check2et3(grid,tempoGrid,ligne,colonne){
     let around=0;
-    if(grid[ligne -1][colonne -1]==1){
-        around++;
+    for(let k=-1; k<=1; k++){
+        let tempoLigne=ligne+k;
+        if(tempoLigne<0){
+            tempoLigne=grid.length-1;
+        }
+        if(tempoLigne>grid.length-1){
+            tempoLigne=0;
+        }
+        for(let l=-1; l<=1; l++){
+            let tempoColonne=colonne+l;
+            if(tempoColonne<0){
+                tempoColonne=grid[tempoLigne].length-1;
+            }
+            if(tempoColonne>grid[tempoLigne].length-1){
+               tempoColonne=0;
+            }            
+            if(grid[tempoLigne][tempoColonne]==1){
+                around++; 
+            }
+        }
     }
-    if(grid[ligne -1][colonne ]==1){
-        around++;
-    }
-    if(grid[ligne -1][colonne +1]==1){
-        around++;
-    }
-    if(grid[ligne][colonne -1]==1){
-        around++;
-    }
-    if(grid[ligne][colonne +1]==1){
-        around++;
-    }
-    if(grid[ligne +1][colonne -1]==1){
-        around++;
-    }
-    if(grid[ligne +1][colonne]==1){
-        around++;
-    }
-    if(grid[ligne +1][colonne +1]==1){
-        around++;
-    }
-    if(around!=2 && around!=3){
-        tempoGrid[ligne][colonne]=0;
-    }else{
+    if(around==3){
         tempoGrid[ligne][colonne]=1;
     }
-    return tempoGrid;
-}
-// vérif pour 3
-function check3(grid,tempoGrid,ligne,colonne){
-    let around3=0;
-    if(grid[ligne -1][colonne -1]==1){
-        around3++;
-    }
-    if(grid[ligne -1][colonne]==1){
-        around3++;
-    }
-    if(grid[ligne -1][colonne +1]==1){
-        around3++;
-    }
-    if(grid[ligne][colonne -1]==1){
-        around3++;
-    }
-    if(grid[ligne][colonne +1]==1){
-        around3++;
-    }
-    if(grid[ligne +1][colonne -1]==1){
-        around3++;
-    }
-    if(grid[ligne +1][colonne]==1){
-        around3++;
-    }
-    if(grid[ligne +1][colonne +1]==1){
-        around3++;
-    }
-    if(around3==3){
+    if(around==4 && grid[ligne][colonne]==1){
         tempoGrid[ligne][colonne]=1;
     }
     return tempoGrid;
@@ -200,31 +155,20 @@ function check3(grid,tempoGrid,ligne,colonne){
 // faire un saut de 1 avec la barre espace
 function evolution(grid) {
     let tempoGrid=[];    
-    for (let j = 0; j < hauteur + 2; j++) {
+    for (let j = 0; j < hauteur ; j++) {
         let tabm = [];
-        for (let i = 0; i < largeur + 2; i++) {
-            if (j == 0 || j == hauteur + 1 || i == 0 || i == largeur + 1) {
-                tabm[i] = 8;
-            } else {
-                tabm[i] = 0;
-            }
+        for (let i = 0; i < largeur ; i++) {
+            tabm[i] = 0;
         }
         tempoGrid.push(tabm);
     }
-    for(let ligne=1; ligne<grid.length-1; ligne++){
-        for(let colonne=1; colonne<grid[ligne].length-1; colonne++){
-            switch(grid[ligne][colonne]){
-                case 1:
-                    check2(grid,tempoGrid,ligne,colonne);
-                break;
-                case 0:
-                    check3(grid,tempoGrid,ligne,colonne);
-                break;   
-            }
+    for(let ligne=0; ligne<grid.length; ligne++){
+        for(let colonne=0; colonne<grid[ligne].length; colonne++){
+            check2et3(grid,tempoGrid,ligne,colonne)
         }
     }
-    for (let j = 0; j < hauteur + 2; j++) {
-        for (let i = 0; i < largeur + 2; i++) {
+    for (let j = 0; j < hauteur ; j++) {
+        for (let i = 0; i < largeur ; i++) {
             if (tempoGrid[j][i]==1) {
                 grid[j][i] = 1;
             } if(tempoGrid[j][i]==0) {
@@ -279,30 +223,30 @@ clique.addEventListener("click", function () {
         case 1:
             intervalEvolution = setInterval(function () {
                 evolution(grid);
-            }, 800);
+            }, 600);
             intervalConversion = setInterval(function () {
                 conversionHTML(grid);
-            }, 800);
+            }, 600);
             vLecture.src = "imageJDV/avanceRapide.png";
             break;
         // bouton avance rapide
         case 2:
             intervalEvolution = setInterval(function () {
                 evolution(grid);
-            }, 400);
+            }, 300);
             intervalConversion = setInterval(function () {
                 conversionHTML(grid);
-            }, 400);
+            }, 300);
             vLecture.src = "imageJDV/avanceTresRapide.png";
             break;
         // bouton avance tres rapide
         case 3:
             intervalEvolution = setInterval(function () {
                 evolution(grid);
-            }, 200);
+            }, 150);
             intervalConversion = setInterval(function () {
                 conversionHTML(grid);
-            }, 200);
+            }, 150);
             vLecture.src = "imageJDV/pause.png";
             break;
         // pause

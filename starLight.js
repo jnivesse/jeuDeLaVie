@@ -46,7 +46,7 @@ function firestar(){
             let blaY=(rngStarY+(((rngY-rngStarY)/200)*i)-100);
             star.style.left=blaX + "px";
             star.style.top=blaY + "px";            
-            if(blaX<10 || blaX>(xMax-50)){
+            if(blaX<10 || blaX>(xMax-30)){
                 star.style.display="none"; 
             }
         }
